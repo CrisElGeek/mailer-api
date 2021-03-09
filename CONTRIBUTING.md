@@ -1,0 +1,3 @@
+# Requerimentos
+
+- PHPMailer
