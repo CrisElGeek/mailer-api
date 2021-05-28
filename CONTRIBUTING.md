@@ -1,3 +1,9 @@
 # Requerimentos
 
-- PHPMailer
+## Composer components
+- phpmailer/phpmailer
+- Symfony/Yaml
+
+# Variables reservadas
+
+- $config

@@ -1,0 +1,8 @@
+development: true
+debug: true
+cors:
+  active: true
+  domains: null
+timezone: America/Mazatlan
+auth:
+  hash: VQ!R8?(GV*pAM)vKe^WvxC!$pB681d8u
