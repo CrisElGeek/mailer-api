@@ -5,17 +5,17 @@ use App\Auth\Validation;
 $methodsAllowed = [
 	'post' => ['auth' => true]
 ];
-$hashString = $bodyRequest->hash;
+$hashString = $_POST['hash'];
 $session = Validation::ModuleSecurity($methodsAllowed, $hashString);
 
 require 'controller.php';
 
 $method = REQUEST_METHOD;
 
-$contact = new Contact($bodyRequest);
+$upload = new Upload();
 
-if(method_exists($contact, $method)) {
-	$response = $contact->$method();
+if(method_exists($upload, $method)) {
+	$response = $upload->$method();
 } else {
 	http_response_code(500);
 	error_logs(['El metodo solicitado no esta incorporado a la clase de este modulo', $method]);

@@ -1,3 +1,4 @@
+statics_url: https://mailerapi.criselgeek.com/statics/
 development: true
 debug: true
 cors:
@@ -6,3 +7,14 @@ cors:
 timezone: America/Mazatlan
 auth:
   hash: VQ!R8?(GV*pAM)vKe^WvxC!$pB681d8u
+mailer:
+  host: mail.roomyhost.com
+  user: dev@chavodigital.com
+  password: FlH^9XC$5WW!19KC
+  email: dev@chavodigital.com
+  port: 465
+  smtp_secure: ssl
+  smtp_auth: true
+  debug: 0
+  smtp: true
+  sender: Cristian Rodríguez

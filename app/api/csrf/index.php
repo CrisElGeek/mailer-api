@@ -11,6 +11,7 @@ $remoteIPAddr = $_SERVER['REMOTE_ADDR'];
 $hash = HashAuth::Create($remoteIPAddr);
 
 return [
-	'hash' => $hash
+	'hash' => $hash,
+	'remote_ip' => $remoteIPAddr
 ];
 ?>

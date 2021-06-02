@@ -1,2 +1,5 @@
 .DS_Store
 *.swp
+public/libs/mailer/node_modules/
+app/extensions/vendor/
+public/statics/uploads/

@@ -12,7 +12,6 @@ ErrorDocument 404 https://mailerapi.criselgeek.com/error.php
 RewriteRule ^mailer/?$ error.php?e=404 [L]
 RewriteRule ^mailer/v1/?$ error.php?e=404 [L]
 RewriteRule ^mailer/v1/([a-z-]+)?$ mailer.php?m=$1 [QSA]
-RewriteRule ^mailer/v1/([a-z-]+)/([a-zA-Z0-9]+)/?$ mailer.php?m=$1&hash=$2 [QSA]
 
 #Header unset ETag
 FileETag None

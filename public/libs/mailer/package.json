@@ -1,0 +1,25 @@
+{
+  "name": "mailer-api",
+  "version": "1.0.0",
+  "description": "Esta API como su nombre lo dice esta diseñada para enviar mensajes autenticados mediante el protocolo SMTP utilizando PHPMailer. La idea de este programa es que sea de facil implementación en proyectos donde se necesite implementar esta funcionalidad sin tener que crearlo desde cero.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CrisElGeek/mailer-api.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/CrisElGeek/mailer-api/issues"
+  },
+  "homepage": "https://github.com/CrisElGeek/mailer-api#readme",
+  "dependencies": {
+    "axios": "^0.21.1",
+    "webpack": "^5.38.1",
+    "webpack-cli": "^4.7.0",
+    "webpack-dev-server": "^3.11.2"
+  }
+}
