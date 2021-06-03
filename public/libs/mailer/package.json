@@ -18,6 +18,8 @@
   "homepage": "https://github.com/CrisElGeek/mailer-api#readme",
   "dependencies": {
     "axios": "^0.21.1",
+    "bootstrap": "^5.0.1",
+    "validator": "^13.6.0",
     "webpack": "^5.38.1",
     "webpack-cli": "^4.7.0",
     "webpack-dev-server": "^3.11.2"

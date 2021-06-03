@@ -4,13 +4,25 @@
 	<base href="/">
 	<meta charset="UTF-8">
 	<title>FORM TEST</title>
-	<script src="/libs/mailer/assets/mailer.js" tyle="text/javascript"></script>
+	<script src="/libs/mailer/assets/mailer.js" style="text/javascript"></script>
 </head>
 <body>
-	<form id="contactForm">
-		<input id="name" type="text" name="name" placeholder="Nombre completo">
-		<input id="email" type="email" name="email" placeholder="Correo electrónico">
-		<input id="curriculum" type="file" name="curriculum" placeholder="Curriculum">
+	<form id="contactForm" novalidate>
+		<div>
+			<label for="name">Nombre Completo</label>
+			<input id="name" type="text" name="name" placeholder="Juanito Pérez">
+			<span id="input-error" data-id="name"></span>
+		</div>
+		<div>
+			<label for="name">Correo electrónico</label>
+			<input id="email" type="email" name="email" placeholder="user@domain.tld">
+			<span id="input-error" data-id="email"></span>
+		</div>
+		<div>
+			<label for="curriculum">Curriculum</label>
+			<input id="curriculum" type="file" name="curriculum" placeholder="Curriculum">
+			<span id="input-error" data-id="attachments"></span>
+		</div>
 		<input type="submit" value="Enviar">
 	</form>
 </body>
