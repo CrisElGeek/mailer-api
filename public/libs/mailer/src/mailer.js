@@ -1,6 +1,25 @@
 import axios from 'axios'
 import validator from 'validator'
 
+var config = {
+	apiUrl:'https://mailerapi.criselgeek.com/mailer/v1/'
+}
+
+let rules = {
+	name: {
+		empty: {},
+		len: {min: 3, max: 50}
+	},
+	email: {
+		empty: {},
+		email: null
+	},
+	attachments: {
+		empty: {},
+		json: {}
+	}
+}
+
 class FormProcess {
 	constructor(formId, apiUrl, rules) {
 		this.apiUrl = apiUrl
@@ -143,20 +162,6 @@ class CSRFHash {
 }
 
 window.onload = () => {
-	new CSRFHash('#contactForm', 'https://mailerapi.criselgeek.com/mailer/v1/').Get()
-	let rules = {
-		name: {
-			empty: {},
-			len: {min: 3, max: 50}
-		},
-		email: {
-			empty: {},
-			email: null
-		},
-		attachments: {
-			empty: {},
-			json: {}
-		}
-	}
-	new FormProcess('#contactForm', 'https://mailerapi.criselgeek.com/mailer/v1/', rules).Send()
+	new CSRFHash('#contactForm', config.apiUrl).Get()
+	new FormProcess('#contactForm', config.apiUrl, rules).Send()
 }
