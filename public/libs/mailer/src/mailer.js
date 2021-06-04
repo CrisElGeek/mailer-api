@@ -1,26 +1,7 @@
 import axios from 'axios'
 import validator from 'validator'
 
-var config = {
-	apiUrl:'https://mailerapi.criselgeek.com/mailer/v1/'
-}
-
-let rules = {
-	name: {
-		empty: {},
-		len: {min: 3, max: 50}
-	},
-	email: {
-		empty: {},
-		email: null
-	},
-	attachments: {
-		empty: {},
-		json: {}
-	}
-}
-
-class FormProcess {
+export class FormProcess {
 	constructor(formId, apiUrl, rules) {
 		this.apiUrl = apiUrl
 		this.rules = rules
@@ -150,7 +131,7 @@ class FormProcess {
 	}
 }
 
-class CSRFHash {
+export class CSRFHash {
 	constructor(formId, apiUrl) {
 		this.apiUrl = apiUrl
 		this.form = document.querySelector(formId)
@@ -173,9 +154,4 @@ class CSRFHash {
 				alert('Ha ocurrido un error, posiblemente no funcione este formulario')
 			})
 	}
-}
-
-window.onload = () => {
-	new CSRFHash('#contactForm', config.apiUrl).Get()
-	new FormProcess('#contactForm', config.apiUrl, rules).Send()
 }

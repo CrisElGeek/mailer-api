@@ -2,7 +2,7 @@
 module.exports = {
   mode: 'development',
   entry: {
-    'mailer': './src/mailer',
+    'contact': './src/contact',
   },
   output: {
     path: __dirname + '/assets/',
