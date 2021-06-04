@@ -57,6 +57,7 @@ class FormProcess {
 			let alertField = this.form.querySelector('[data-id="' + error.field  + '"]')
 			if(alertField) {
 				alertField.innerText = error.message
+				alertField.style.display = 'block'
 			}
 		})
 	}
@@ -106,7 +107,7 @@ class FormProcess {
 							result = validator.isLength(value, this.rules[rule][param]) ? true : {param: param, field: field, message: `El campo ${field} no cumple con el límite máximo o mínimo de caracteres`}
 							break
 						case 'empty':
-							result = validator.isEmpty(value, this.rules[rule][param]) ? false : {param: param, field: field, message: `El campo ${field} no debe estar vacio`}
+							result = !validator.isEmpty(value, this.rules[rule][param]) ? true : {param: param, field: field, message: `El campo ${field} no debe estar vacio`}
 							break
 					}
 				}
@@ -127,10 +128,23 @@ class FormProcess {
 		}
 	}
 
+	cleanErrorMessages() {
+		let alertFields = this.form.querySelectorAll('#input-error')
+		alertFields.forEach(field => {
+			field.innerText = ''
+			field.style.display = 'none'
+		})
+	}
+
 	Send() {
 		this.attachmentUpload()
+		this.cleanErrorMessages()
+		this.form.addEventListener('click', () => {
+			this.cleanErrorMessages()
+		})
 		this.form.addEventListener('submit', e => {
 			e.preventDefault()
+			this.cleanErrorMessages()
 			this.GetFormFields()
 		})
 	}
