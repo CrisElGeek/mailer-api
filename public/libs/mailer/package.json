@@ -17,11 +17,22 @@
   },
   "homepage": "https://github.com/CrisElGeek/mailer-api#readme",
   "dependencies": {
+    "autoprefixer": "^10.2.6",
     "axios": "^0.21.1",
     "bootstrap": "^5.0.1",
+    "css-loader": "^5.2.6",
+    "file-loader": "^6.2.0",
+    "mini-css-extract-plugin": "^1.6.0",
+    "node-sass": "^6.0.0",
+    "postcss-loader": "^5.3.0",
+    "sass-loader": "^12.0.0",
+    "style-loader": "^2.0.0",
     "validator": "^13.6.0",
     "webpack": "^5.38.1",
     "webpack-cli": "^4.7.0",
     "webpack-dev-server": "^3.11.2"
+  },
+  "devDependencies": {
+    "prettier": "2.3.0"
   }
 }

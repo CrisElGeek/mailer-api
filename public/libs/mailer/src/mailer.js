@@ -1,12 +1,18 @@
 import axios from 'axios'
 import validator from 'validator'
+import bootstrap from 'bootstrap'
 
 export class FormProcess {
-	constructor(formId, apiUrl, rules) {
-		this.apiUrl = apiUrl
+	constructor(formId, config, rules) {
+		this.apiUrl = config.apiUrl
 		this.rules = rules
+		this.config = config
 		this.form = document.querySelector(formId)
 		this.attachments = null
+		this.loadingElement = this.form.querySelector('#form-loading')
+		this.formMessageElement = this.form.querySelector('#form-message')
+		this.formMessageTitle = this.formMessageElement.querySelector('#form-message-title')
+		this.formMessageText = this.formMessageElement.querySelector('#form-message-text')
 	}
 
 	GetFormFields() {
@@ -28,8 +34,9 @@ export class FormProcess {
 		}
 		if(errors.length > 0) {
 			this.displayErrors(errors)
+			this.loadingElement.classList.remove('spinner-show')
 		} else {
-			this.PostData()
+			this.PostData(fields)
 		}
 	}
 
@@ -47,6 +54,7 @@ export class FormProcess {
 		let files = this.form.querySelectorAll('input[type="file"]')
 		files.forEach(file => {
 			file.addEventListener('change', e => {
+				this.loadingElement.classList.add('spinner-show')
 				let hash = this.form.querySelector('input[name="hash"]')
 				let fieldName = e.target.getAttribute('name')
 				if(this.attachments && this.attachments[fieldName] !== undefined && this.attachments[fieldName]) {
@@ -63,10 +71,13 @@ export class FormProcess {
 				}).then(response => {
 					this.attachments = !this.attachments ? {} : null
 					this.attachments[fieldName] = response.data.data.files
+					this.loadingElement.classList.remove('spinner-show')
 				}).catch(error => {
 					if(this.attachments && this.attachments[fieldName] !== undefined && this.attachments[fieldName]) {
 						delete this.attachments[fieldName]
+						this.formMessageElement.classList.add('alert-danger')
 					}
+					this.loadingElement.classList.remove('spinner-show')
 				})
 			})
 		})
@@ -98,15 +109,34 @@ export class FormProcess {
 	}
 
 	PostData(data) {
-		if(data === true) {
+		if(data !== false) {
 			axios.post(this.apiUrl + 'contact', data)
 				.then(response => {
-					console.log(response)
+					this.showFormMessages(this.config.messages.success)
+					this.form.reset()
 				}).catch(error => {
 					console.log(error)
-					alert('Ocurrio un error al enviar el formulario')
+					this.showFormMessages(this.config.messages.failed, false)
 				})
+		} else {
+			this.showFormMessages(this.config.messages.failed, false)
 		}
+	}
+
+	showFormMessages(message, success = true) {
+		let alertClassName = null
+		switch(success) {
+			case false:
+				alertClassName = 'alert-danger'
+				break
+			default:
+				alertClassName = 'alert-success'
+				break
+		}
+		this.loadingElement.classList.remove('spinner-show')
+		this.formMessageTitle.innerText = message.title
+		this.formMessageText.innerText = message.text
+		this.formMessageElement.classList.add(alertClassName)
 	}
 
 	cleanErrorMessages() {
@@ -115,9 +145,14 @@ export class FormProcess {
 			field.innerText = ''
 			field.style.display = 'none'
 		})
+		this.formMessageTitle.innerText = ''
+		this.formMessageText.innerText = ''
+		this.formMessageElement.classList.remove('alert-danger')
+		this.formMessageElement.classList.remove('alert-success')
 	}
 
 	Send() {
+		this.loadingElement.classList.remove('spinner-show')
 		this.attachmentUpload()
 		this.cleanErrorMessages()
 		this.form.addEventListener('click', () => {
@@ -125,6 +160,7 @@ export class FormProcess {
 		})
 		this.form.addEventListener('submit', e => {
 			e.preventDefault()
+			this.loadingElement.classList.add('spinner-show')
 			this.cleanErrorMessages()
 			this.GetFormFields()
 		})
@@ -132,8 +168,8 @@ export class FormProcess {
 }
 
 export class CSRFHash {
-	constructor(formId, apiUrl) {
-		this.apiUrl = apiUrl
+	constructor(formId, config) {
+		this.apiUrl = config.apiUrl
 		this.form = document.querySelector(formId)
 	}
 

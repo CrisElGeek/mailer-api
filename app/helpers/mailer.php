@@ -37,9 +37,11 @@ abstract class Mailer {
 					$mail->addBCC($bcc['email'], $bcc['name']);
 				}
 			}
-			if($data['attachments'] && count($data['attachments']) > 0) {
+			if($data['attachments'] && is_object($data['attachments'])) {
 				foreach($data['attachments'] as $attach) {
-					$mail->addAttachment($attach['file'], $attach['name']);
+					foreach($attach as $doc) {
+						$mail->addAttachment(STATICS_DIR .$doc->file, $doc->name);
+					}
 				}
 			}
 

@@ -20,7 +20,8 @@ class Contact {
 					'email' => $GLOBALS['config']['mailer']['email'],
 					'name' => $GLOBALS['config']['mailer']['sender']
 				]
-			]
+			],
+			'attachments' => json_decode($this->request->attachments)
 		];
 		try {
 			Mailer::Send($data);
