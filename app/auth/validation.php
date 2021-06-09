@@ -8,6 +8,8 @@
 			$validated = false;
 			if($uuid && preg_match('#' .$regex .'#', $uuid) && $uuid == $config['auth']['uuid']) {
 				$validated = true;
+			} else {
+				throw new \Exception('uuid not validated', 401);
 			}
 			return $validated;
 		}
@@ -25,6 +27,7 @@
 				self::Methods($methods);
 			} catch(\Exception $e) {
 				http_response_code(405);
+				error_logs(['Method not allowed', $e->getMessage(), $hashString, json_encode($methods)]);
 				die(json_encode([
 					'message'	=> 'Method not allowed'
 				]));
@@ -35,12 +38,14 @@
 			if($m['auth'] == true && $hashString) {
 				if(HashAuth::Validate($hashString, $_SERVER['REMOTE_ADDR']) != true) {
 					http_response_code(401);
+					error_logs('No acccess allowed, invalid hash or remote ip', $hashString);
 					die(json_encode([
 						'message'	=> 'No acccess allowed'
 					]));
 				}
 			} elseif($m['auth'] == true && $hashString == NULL) {
 				http_response_code(401);
+				error_logs('No access allowed, no hash provided');
 				die(json_encode([
 					'message'	=> 'No acccess allowed'
 				]));
