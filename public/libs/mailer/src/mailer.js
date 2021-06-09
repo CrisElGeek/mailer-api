@@ -9,10 +9,12 @@ export class FormProcess {
 		this.config = config
 		this.form = document.querySelector(formId)
 		this.attachments = null
-		this.loadingElement = this.form.querySelector('#form-loading')
-		this.formMessageElement = this.form.querySelector('#form-message')
-		this.formMessageTitle = this.formMessageElement.querySelector('#form-message-title')
-		this.formMessageText = this.formMessageElement.querySelector('#form-message-text')
+		if(this.form) {
+			this.loadingElement = this.form.querySelector('#form-loading')
+			this.formMessageElement = this.form.querySelector('#form-message')
+			this.formMessageTitle = this.formMessageElement.querySelector('#form-message-title')
+			this.formMessageText = this.formMessageElement.querySelector('#form-message-text')
+		}
 	}
 
 	GetFormFields() {
@@ -110,7 +112,7 @@ export class FormProcess {
 
 	PostData(data) {
 		if(data !== false) {
-			axios.post(this.apiUrl + 'contact', data)
+			axios.post(this.apiUrl + this.config.module, data)
 				.then(response => {
 					this.showFormMessages(this.config.messages.success)
 					this.form.reset()
@@ -152,18 +154,20 @@ export class FormProcess {
 	}
 
 	Send() {
-		this.loadingElement.classList.remove('spinner-show')
-		this.attachmentUpload()
-		this.cleanErrorMessages()
-		this.form.addEventListener('click', () => {
+		if(this.form) {
+			this.loadingElement.classList.remove('spinner-show')
+			this.attachmentUpload()
 			this.cleanErrorMessages()
-		})
-		this.form.addEventListener('submit', e => {
-			e.preventDefault()
-			this.loadingElement.classList.add('spinner-show')
-			this.cleanErrorMessages()
-			this.GetFormFields()
-		})
+			this.form.addEventListener('click', () => {
+				this.cleanErrorMessages()
+			})
+			this.form.addEventListener('submit', e => {
+				e.preventDefault()
+				this.loadingElement.classList.add('spinner-show')
+				this.cleanErrorMessages()
+				this.GetFormFields()
+			})
+		}
 	}
 }
 
@@ -182,12 +186,14 @@ export class CSRFHash {
 	}
 
 	Get() {
-		axios.get(this.apiUrl + 'csrf')
-			.then(response => {
-				this.CreateHiddenInput(response.data.data.hash)
-			}).catch(error => {
-				console.error(error)
-				alert('Ha ocurrido un error, posiblemente no funcione este formulario')
-			})
+		if(this.form) {
+			axios.get(this.apiUrl + 'csrf')
+				.then(response => {
+					this.CreateHiddenInput(response.data.data.hash)
+				}).catch(error => {
+					console.error(error)
+					alert('Ha ocurrido un error, posiblemente no funcione este formulario')
+				})
+		}
 	}
 }

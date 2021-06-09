@@ -2,6 +2,7 @@ import {FormProcess, CSRFHash} from './mailer.js'
 
 var config = {
 	apiUrl:'https://mailerapi.criselgeek.com/mailer/v1/',
+	module: 'contact',
 	messages: {
 		success: {
 			title: 'Mensaje enviado',
