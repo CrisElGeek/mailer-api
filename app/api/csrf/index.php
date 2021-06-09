@@ -7,7 +7,7 @@ $methodsAllowed = [
 ];
 
 $session = Validation::ModuleSecurity($methodsAllowed);
-$remoteIPAddr = $_SERVER['REMOTE_ADDR'];
+$remoteIPAddr = getUserIpAddr();
 $hash = HashAuth::Create($remoteIPAddr);
 
 return [

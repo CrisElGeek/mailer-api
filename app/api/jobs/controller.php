@@ -1,10 +1,10 @@
 <?php
 use App\Helpers\Mailer;
 
-class Contact {
+class Jobs {
 	function __construct($request) {
 		$this->request = $request;
-		$this->subject = 'Mensaje de contacto desde la página web de Adelnor';
+		$this->subject = 'Nueva solicitud de trabajo enviada';
 	}
 
 	public function post() {
@@ -19,8 +19,8 @@ class Contact {
 			],
 			'to' => [
 				[
-					'email' => $GLOBALS['config']['recipients']['contact']['email'],
-					'name' => $GLOBALS['config']['recipients']['contact']['sender']
+					'email' => $GLOBALS['config']['recipients']['jobs']['email'],
+					'name' => $GLOBALS['config']['recipients']['jobs']['sender']
 				]
 			],
 			'attachments' => json_decode($this->request->attachments)
@@ -29,7 +29,7 @@ class Contact {
 			Mailer::Send($data);
 		} catch(\Exception $e) {
 			http_response_code(500);
-			error_logs(['Error al enviar el mensaje de contacto', $e->getMessage(), json_encode($this->request)]);
+			error_logs(['Error al enviar el mensaje', $e->getMessage(), json_encode($this->request)]);
 			die(json_encode([
 				'message' => $e->getMessage()
 			]));
@@ -46,7 +46,11 @@ class Contact {
 		$ip = $_SERVER['REMOTE_ADDR'];
 		$datetime = date('d-m-Y H:i:s');
 		$body = $this->request->message;
-		$newsletter = $this->request->newsletter ? 'Si' : 'No';
+		$terms = $this->request->terms ? 'Si' : 'No';
+		$area = $this->request->area;
+		$city = $this->request->city;
+		$state = $this->request->state;
+		$phone = $this->request->phone;
 		$b =
 <<<HTML
 	<body>
@@ -54,7 +58,11 @@ class Contact {
 			<li>Nombre: $name</li>
 			<li>Correo: $email</li>
 			<li>Asunto: $this->subject</li>
-			<li>Quiere subscribirse al newsletter: $newsletter</li>
+			<li>Teléfono: $phone</li>
+			<li>Ciudad: $city</li>
+			<li>Estado: $state</li>
+			<li>Área de interés: $area</li>
+			<li>Acepta términos y condiciones: $terms</li>
 			<li>Dirección IP: $ip</li>
 			<li>Fecha y hora: $datetime</li>
 		</ul>

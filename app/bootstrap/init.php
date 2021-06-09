@@ -3,6 +3,7 @@ require __DIR__ . '/../extensions/vendor/autoload.php';
 require __DIR__ . '/../config/base.php';
 require __DIR__ . '/modules.php';
 require __DIR__ . '/../libs/error.log.php';
+require __DIR__ . '/../libs/functions.php';
 require __DIR__ . '/requests.php';
 require __DIR__ . '/../auth/hash.php';
 require __DIR__ . '/../auth/validation.php';

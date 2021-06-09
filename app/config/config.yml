@@ -1,9 +1,11 @@
-statics_url: https://mailerapi.criselgeek.com/statics/
+statics_url: https://adelnor.com/statics/
 development: true
 debug: true
 cors:
-  active: true
-  domains: null
+  active: false
+  domains:
+    - www.adelnor.com
+      - adelnor.com
 timezone: America/Mazatlan
 auth:
   hash: VQ!R8?(GV*pAM)vKe^WvxC!$pB681d8u
@@ -17,4 +19,11 @@ mailer:
   smtp_auth: true
   debug: 0
   smtp: true
-  sender: Cristian Rodríguez
+  sender: Adelnor
+recipients:
+   contact:
+     email: mcarrillo@innovacionagricola.com
+     name: Contacto
+   jobs:
+     email: mcarrillo@innovacionagricola.com
+     name: Bolsa de trabajo
