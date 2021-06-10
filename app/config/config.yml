@@ -1,9 +1,11 @@
-statics_url: https://adelnor.criselgeek.com/statics/
-development: true
-debug: true
+statics_url: https://adelnor.com/statics/
+development: false
+debug: false
 cors:
-  active: true
-  domains: null
+  active: false
+  domains:
+    - www.adelnor.com
+    - adelnor.com
 timezone: America/Mazatlan
 auth:
   hash: VQ!R8?(GV*pAM)vKe^WvxC!$pB681d8u
@@ -20,8 +22,8 @@ mailer:
   sender: Adelnor
 recipients:
    contact:
-     email: dev@chavodigital.com
+     email: jramirez@adelnor.com
      name: Contacto
    jobs:
-     email: dev@chavodigital.com
+     email: rpadilla@adelnor.com
      name: Bolsa de trabajo
