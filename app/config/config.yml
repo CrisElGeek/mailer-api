@@ -11,9 +11,9 @@ auth:
   hash: VQ!R8?(GV*pAM)vKe^WvxC!$pB681d8u
 mailer:
   host: mail.roomyhost.com
-  user: dev@chavodigital.com
-  password: FlH^9XC$5WW!19KC
-  email: dev@chavodigital.com
+  user: mailer@adelnor.com
+  password: RFTz19zqCpgm
+  email: mailer@adelnor.com
   port: 465
   smtp_secure: ssl
   smtp_auth: true
