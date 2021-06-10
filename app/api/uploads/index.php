@@ -6,9 +6,7 @@ $methodsAllowed = [
 	'post' => ['auth' => true]
 ];
 $hashString = $_POST['hash'];
-echo $hashString;
 $session = Validation::ModuleSecurity($methodsAllowed, $hashString);
-echo 'PASSED';
 require 'controller.php';
 
 $method = REQUEST_METHOD;
