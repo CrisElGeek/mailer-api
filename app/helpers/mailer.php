@@ -22,7 +22,7 @@ abstract class Mailer {
 			$mail->CharSet = 'UTF-8';
 
 			//Recipients
-			$mail->setFrom($data['from']['email'], $data['from']['name']);
+			$mail->setFrom($GLOBALS['config']['mailer']['user'], $data['from']['name']);
 			$mail->addReplyTo($data['from']['email'], $data['from']['name']);
 			foreach($data['to'] as $to) {
 				$mail->addAddress($to['email'], $to['name']);     //Add a recipient

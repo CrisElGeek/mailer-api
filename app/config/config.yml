@@ -10,9 +10,9 @@ timezone: America/Mazatlan
 auth:
   hash: VQ!R8?(GV*pAM)vKe^WvxC!$pB681d8u
 mailer:
-  host: mail.roomyhost.com
+  host: secure.emailsrvr.com
   user: mailer@adelnor.com
-  password: RFTz19zqCpgm
+  password: R00ster+=21
   email: mailer@adelnor.com
   port: 465
   smtp_secure: ssl
@@ -22,8 +22,8 @@ mailer:
   sender: Adelnor
 recipients:
    contact:
-     email: jramirez@adelnor.com
+     email: dev@chavodigital.com
      name: Contacto
    jobs:
-     email: rpadilla@adelnor.com
+     email: dev@chavodigital.com
      name: Bolsa de trabajo
