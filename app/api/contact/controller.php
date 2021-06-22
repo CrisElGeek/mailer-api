@@ -18,10 +18,10 @@ class Contact {
 				'name' => $this->request->name
 			],
 			'to' => [
-				[
-					'email' => $GLOBALS['config']['recipients']['contact']['email'],
-					'name' => $GLOBALS['config']['recipients']['contact']['sender']
-				]
+				$GLOBALS['config']['recipients']['contact']['to']
+			],
+			'cc' => [
+				$GLOBALS['config']['recipients']['contact']['cc']
 			],
 			'attachments' => json_decode($this->request->attachments)
 		];

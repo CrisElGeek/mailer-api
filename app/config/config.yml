@@ -20,8 +20,16 @@ mailer:
   sender: Adelnor
 recipients:
    contact:
-     email: dev@chavodigital.com
-     name: Contacto
+     to:
+       email: jramirez@adelnor.com
+       name: Contacto
+     cc:
+       email: mcarrillo@innovacionagricola.com
+       name: Martha Carrillo
    jobs:
-     email: dev@chavodigital.com
-     name: Bolsa de trabajo
+     to:
+       email: rpadilla@adelnor.com
+       name: Bolsa de trabajo
+     cc:
+       email: mcarrillo@innovacionagricola.com
+       name: Martha Carrillo
