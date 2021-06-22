@@ -21,15 +21,15 @@ mailer:
 recipients:
    contact:
      to:
-       email: jramirez@adelnor.com
+       email: dev@chavodigital.com
        name: Contacto
      cc:
-       email: mcarrillo@innovacionagricola.com
+       email: cristian@migarage.mx
        name: Martha Carrillo
    jobs:
      to:
-       email: rpadilla@adelnor.com
+       email: dev@chavodigital.com
        name: Bolsa de trabajo
      cc:
-       email: mcarrillo@innovacionagricola.com
+       email: cristian@migarage.mx
        name: Martha Carrillo
