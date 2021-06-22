@@ -22,8 +22,16 @@ mailer:
   sender: Adelnor
 recipients:
    contact:
-     email: dev@chavodigital.com
-     name: Contacto
+     to:
+       email: dev@chavodigital.com
+       name: Contacto
+     cc:
+       email: cristian@migarage.mx
+       name: Martha Carrillo
    jobs:
-     email: dev@chavodigital.com
-     name: Bolsa de trabajo
+     to:
+       email: dev@chavodigital.com
+       name: Bolsa de trabajo
+     cc:
+       email: cristian@migarage.mx
+       name: Martha Carrillo
