@@ -18,10 +18,10 @@ class Jobs {
 				'name' => $this->request->name
 			],
 			'to' => [
-				$GLOBALS['config']['recipients']['contact']['to']
+				$GLOBALS['config']['recipients']['jobs']['to']
 			],
 			'cc' => [
-				$GLOBALS['config']['recipients']['contact']['cc']
+				$GLOBALS['config']['recipients']['jobs']['cc']
 			],
 			'attachments' => json_decode($this->request->attachments)
 		];
