@@ -3,7 +3,7 @@ Options All -Indexes
 RewriteBase /
 RewriteCond %{REQUEST_URI} !^/robots\.txt$
 
-ErrorDocument 404 https://mailerapi.criselgeek.com/error.php
+ErrorDocument 404 https://apimailer.cris.com.mx/error.php
 
 ## Direcciones amigables
 ### API
