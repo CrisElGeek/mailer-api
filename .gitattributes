@@ -1,1 +1,2 @@
-public merge=ours
+public/ merge=ours
+public/error.php merge=ours
