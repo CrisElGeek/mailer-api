@@ -8,8 +8,6 @@
 			$validated = false;
 			if($uuid && preg_match('#' .$regex .'#', $uuid) && $uuid == $config['auth']['uuid']) {
 				$validated = true;
-			} else {
-				throw new \Exception('uuid not validated', 401);
 			}
 			return $validated;
 		}
@@ -43,7 +41,7 @@
 						'message'	=> 'No acccess allowed'
 					]));
 				}
-			} elseif($m['auth'] == true && $hashString == NULL) {
+			} elseif($m['auth'] == true && $hashString == NULL && !self::Uuid($_GET['uuid'])) {
 				http_response_code(401);
 				error_logs(['No access allowed, no hash provided']);
 				die(json_encode([

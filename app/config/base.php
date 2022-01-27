@@ -34,6 +34,6 @@ header('Content-Type: application/json; charset=utf8mb4');
 header("P3P: CP='IDC DSP COR CURa ADMa OUR IND PHY ONL COM STA'");
 header('Access-Control-Allow-Credentials: true');
 
-define('DEBUG_LOG_FILE', __DIR__ .'/../logs/debug.log');
+define('DEBUG_LOG_FILE', __DIR__ .'/../../logs/debug.log');
 define('STATICS_DIR', $_SERVER['DOCUMENT_ROOT'] .'/statics/');
 ?>

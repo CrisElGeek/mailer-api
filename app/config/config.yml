@@ -1,4 +1,4 @@
-statics_url: https://adelnor.criselgeek.com/statics/
+statics_url: https://apimailer.cris.com.mx/statics/
 development: true
 debug: true
 cors:
@@ -6,6 +6,7 @@ cors:
   domains: null
 timezone: America/Mazatlan
 auth:
+  uuid: 92eb5920-a627-4cde-8428-485d0229ef87
   hash: VQ!R8?(GV*pAM)vKe^WvxC!$pB681d8u
 mailer:
   host: mail.roomyhost.com
@@ -17,7 +18,7 @@ mailer:
   smtp_auth: true
   debug: 0
   smtp: true
-  sender: Adelnor
+  sender: Chavo Digital
 recipients:
    contact:
      to:
@@ -25,11 +26,17 @@ recipients:
        name: Contacto
      cc:
        email: cristian@migarage.mx
-       name: Martha Carrillo
+       name: Chavo Digital
    jobs:
      to:
        email: dev@chavodigital.com
        name: Bolsa de trabajo
      cc:
        email: cristian@migarage.mx
-       name: Martha Carrillo
+       name: Chavo Digital
+mailchimp:
+  key: 02971832e08effec5afd4fc402fffe25-us20
+  server: us20
+  client_id: 372741327071
+  list_id: f907d7c9f2
+
