@@ -1,0 +1,42 @@
+statics_url: https://api.domain.tld/statics/
+development: true
+debug: true
+cors:
+  active: true
+  domains: null
+timezone: America/Mazatlan
+auth:
+  uuid: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+  hash: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+mailer:
+  host: smtp.domain.tld
+  user: user@domain.tld
+  password: xxxxxxxxxxxxxxxxx
+  email: user@domain.tld
+  port: 000
+  smtp_secure: ssl
+  smtp_auth: true
+  debug: 0
+  smtp: true
+  sender: John Doe
+recipients:
+   contact:
+     to:
+       email: user@domain.tld
+       name: Jon Doe
+     cc:
+       email: user@domain.tld
+       name: John Doe
+   jobs:
+     to:
+       email: user@domain.tld
+       name: John Doe
+     cc:
+       email: user@domain.tld
+       name: John Doe
+mailchimp:
+  key: xxxxxxxxxxxxxxxxxxxxxxxxx-xx00
+  server: xx00
+  client_id: 000000000000
+  list_id: xxxxxxxxxx
+
